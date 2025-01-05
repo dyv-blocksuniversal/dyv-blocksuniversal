@@ -7,6 +7,8 @@
     <title>D&V Blocks Universal</title>
     <!-- Enlace al archivo CSS local -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
     <header>
@@ -19,6 +21,7 @@
                 <li><a href="#productos" aria-label="Ir a Productos">Productos</a></li>
                 <li><a href="#nosotros" aria-label="Ir a Sobre Nosotros">Sobre Nosotros</a></li>
                 <li><a href="#inspiracion" aria-label="Ir a Inspiración">Inspiración</a></li>
+                <li><a href="#testimonios" aria-label="Ir a Testimonios">Testimonios</a></li>
                 <li><a href="#contacto" aria-label="Ir a Contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -30,7 +33,6 @@
             <p>Descubre la magia de crear y compartir con D&V Blocks Universal.</p>
             <a href="#productos" class="cta">Explorar Productos</a>
             <div class="tiktok-feed">
-                <!-- Enlace a TikTok -->
                 <p>Sigue nuestra creatividad en TikTok: 
                    <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">
                        @dv.blocks.univers
@@ -74,6 +76,15 @@
             <p>¡Comparte tu obra con el hashtag <strong>#ConectaConDVB</strong>!</p>
         </section>
 
+        <section id="testimonios">
+            <h2>Testimonios</h2>
+            <div class="testimonials">
+                <p>"Mis hijos adoran los bloques Xinz. Pasan horas creando y compartiendo historias." - Laura G.</p>
+                <p>"Una experiencia increíble. D&V Blocks Universal nos unió como familia." - Andrés T.</p>
+                <p>"El mejor regalo educativo que he comprado. ¡Muy recomendado!" - Sofía R.</p>
+            </div>
+        </section>
+
         <section id="contacto">
             <h2>Contacto</h2>
             <form action="#" method="post">
@@ -95,6 +106,19 @@
 
     <footer>
         <p>&copy; 2024 D&V Blocks Universal. Todos los derechos reservados.</p>
+        <a href="#inicio" class="back-to-top">Volver arriba</a>
     </footer>
+
+    <script>
+        // Mostrar el botón "Volver arriba" al desplazarse
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
