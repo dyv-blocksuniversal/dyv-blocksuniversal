@@ -48,13 +48,13 @@
                     <img src="images/producto1.jpg" alt="Bloques Xinz">
                     <h3>Bloques Xinz</h3>
                     <p>Despierta la creatividad y construye sin límites.</p>
-                    <a href="#" class="btn">Comprar Ahora</a>
+                    <a href="#" class="btn buy-btn">Comprar Ahora</a>
                 </div>
                 <div class="product-item">
                     <img src="images/producto2.jpg" alt="Set Creativo">
                     <h3>Set Creativo</h3>
                     <p>Todo lo que necesitas para crear historias únicas.</p>
-                    <a href="#" class="btn">Comprar Ahora</a>
+                    <a href="#" class="btn buy-btn">Comprar Ahora</a>
                 </div>
             </div>
         </section>
@@ -118,6 +118,17 @@
             } else {
                 backToTopButton.style.display = 'none';
             }
+        });
+
+        // Animación suave para botones
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                button.style.backgroundColor = '#1E90FF';
+            });
+            button.addEventListener('mouseout', () => {
+                button.style.backgroundColor = '#FF6600';
+            });
         });
     </script>
 </body>
