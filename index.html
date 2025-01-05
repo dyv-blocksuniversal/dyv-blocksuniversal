@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Unimos generaciones con bloques que inspiran creatividad y conectan corazones.">
     <title>D&V Blocks Universal</title>
-    <!-- Enlace al archivo CSS local -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Favicon -->
     <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
@@ -17,28 +15,42 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#inicio" aria-label="Ir a Inicio">Inicio</a></li>
-                <li><a href="#productos" aria-label="Ir a Productos">Productos</a></li>
-                <li><a href="#nosotros" aria-label="Ir a Sobre Nosotros">Sobre Nosotros</a></li>
-                <li><a href="#inspiracion" aria-label="Ir a Inspiración">Inspiración</a></li>
-                <li><a href="#testimonios" aria-label="Ir a Testimonios">Testimonios</a></li>
-                <li><a href="#contacto" aria-label="Ir a Contacto">Contacto</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Sobre Nosotros</a></li>
+                <li><a href="#inspiracion">Inspiración</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Buscar productos...">
+            <button onclick="searchProduct()">Buscar</button>
+        </div>
     </header>
+
+    <!-- Banner rotativo -->
+    <section id="banner">
+        <div class="banner-slide" style="background-image: url('images/banner1.jpg');">
+            <h2>¡Nuevos Productos Disponibles!</h2>
+            <p>Explora nuestra última colección de bloques Xinz.</p>
+        </div>
+        <div class="banner-slide" style="background-image: url('images/banner2.jpg');">
+            <h2>Conecta Corazones</h2>
+            <p>Crea momentos inolvidables con D&V Blocks Universal.</p>
+        </div>
+        <div class="banner-slide" style="background-image: url('images/banner3.jpg');">
+            <h2>¡Promociones Especiales!</h2>
+            <p>No te pierdas nuestras ofertas únicas.</p>
+        </div>
+    </section>
 
     <main>
         <section id="inicio">
             <h1>Piezas que conectan corazones</h1>
             <p>Descubre la magia de crear y compartir con D&V Blocks Universal.</p>
             <a href="#productos" class="cta">Explorar Productos</a>
-            <div class="tiktok-feed">
-                <p>Sigue nuestra creatividad en TikTok: 
-                   <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">
-                       @dv.blocks.univers
-                   </a>
-                </p>
-            </div>
         </section>
 
         <section id="productos">
@@ -65,17 +77,6 @@
             <p>Jugar es más que divertirse, es conectarse.</p>
         </section>
 
-        <section id="inspiracion">
-            <h2>Inspiración y Comunidad</h2>
-            <p>Descubre las increíbles creaciones de nuestra comunidad.</p>
-            <div class="gallery">
-                <img src="images/inspiracion1.jpg" alt="Creación 1 de la comunidad">
-                <img src="images/inspiracion2.jpg" alt="Creación 2 de la comunidad">
-                <img src="images/inspiracion3.jpg" alt="Creación 3 de la comunidad">
-            </div>
-            <p>¡Comparte tu obra con el hashtag <strong>#ConectaConDVB</strong>!</p>
-        </section>
-
         <section id="testimonios">
             <h2>Testimonios</h2>
             <div class="testimonials">
@@ -87,7 +88,7 @@
 
         <section id="contacto">
             <h2>Contacto</h2>
-            <form action="#" method="post">
+            <form action="#" method="post" onsubmit="return showConfirmation()">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
 
@@ -119,6 +120,18 @@
                 backToTopButton.style.display = 'none';
             }
         });
+
+        // Función de búsqueda
+        function searchProduct() {
+            const query = document.getElementById('search').value.toLowerCase();
+            alert('Buscando: ' + query);
+        }
+
+        // Mostrar mensaje de confirmación al enviar el formulario
+        function showConfirmation() {
+            alert('¡Tu mensaje ha sido enviado exitosamente! Nos pondremos en contacto pronto.');
+            return false; // Previene el envío real del formulario
+        }
 
         // Animación suave para botones
         const buttons = document.querySelectorAll('.btn');
