@@ -92,7 +92,6 @@
             <h2>Contacto</h2>
             <form action="https://formspree.io/f/xovvpkek" method="POST" onsubmit="handleFormSubmit(event)">
 
-                <input type="text" name="_honeypot" style="display:none">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
             
@@ -101,6 +100,7 @@
             
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje" name="mensaje" required></textarea>
+                <input type="text" name="_honeypot" style="display:none">
             
                 <button type="submit">Enviar</button>
 
