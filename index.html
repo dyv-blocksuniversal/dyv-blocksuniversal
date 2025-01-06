@@ -93,19 +93,18 @@
             <form id="contactForm" action="https://formspree.io/f/xovvpkek" method="POST" novalidate>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name" required>
-    
+            
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Your email" required>
-    
+            
                 <label for="message">Message</label>
                 <textarea id="message" name="message" placeholder="Your message" required></textarea>
-    
-                <!-- Campo para evitar spam -->
+            
                 <input type="text" name="_honeypot" style="display:none">
-    
+            
                 <button type="submit">Send</button>
             </form>
-    
+            
             <p>Follow us on social media:</p>
             <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">TikTok</a>
         </section>      
@@ -133,13 +132,6 @@
             const query = document.getElementById('search').value.toLowerCase();
             alert('Buscando: ' + query);
         }
-
-        // Mostrar mensaje de confirmación al enviar el formulario
-        function showConfirmation() {
-            alert('¡Tu mensaje ha sido enviado exitosamente! Nos pondremos en contacto pronto.');
-            return false; // Previene el envío real del formulario
-        }
-
         // Animación suave para botones
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(button => {
@@ -151,39 +143,37 @@
             });
         });
     </script>
-    <!-- JavaScript -->
     <script>
-        // Función para manejar el envío del formulario
         function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
 
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('¡Tu mensaje ha sido enviado exitosamente!');
-                    form.reset();
-                } else {
-                    return response.json().then(data => {
-                        alert(data.errors ? data.errors.map(e => e.message).join(", ") : 'Hubo un problema. Inténtalo de nuevo.');
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error de conexión. Revisa tu conexión a internet.');
+    fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('¡Tu mensaje ha sido enviado exitosamente!');
+            form.reset();
+        } else {
+            response.json().then(data => {
+                alert(data.errors ? data.errors.map(e => e.message).join(", ") : 'Hubo un problema. Inténtalo de nuevo.');
             });
-    }
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error de conexión. Revisa tu conexión a internet.');
+    });
+}
 
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', handleFormSubmit);
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', handleFormSubmit);
 
     </script>
     
