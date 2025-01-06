@@ -75,8 +75,7 @@
             <h2>Sobre Nosotros</h2>
             <p>En un mundo cada vez más desconectado, D&V Blocks Universal nace con un propósito claro: unir a las personas a través de la magia del juego. Cada bloque que ensamblamos no es solo una pieza de plástico; es un puente que conecta generaciones, una chispa que despierta la creatividad, y un lazo que fortalece las relaciones.
                 Desde el primer momento en que un niño toma una pieza en sus manos hasta cuando un abuelo ayuda a completar una obra maestra, nuestros bloques se convierten en mucho más que juguetes. Son testigos de risas compartidas, desafíos superados en equipo, y momentos que quedarán grabados en la memoria de quienes los viven.
-                Creemos que jugar es el idioma universal de la conexión. Por eso, en D&V Blocks Universal tenemos productos que trascienden edades, culturas y fronteras, recordándonos que lo más importante no es lo que construimos, sino con quién lo hacemos.
-                Somos D&V Blocks Universal: piezas que conectan corazones, creando recuerdos y uniendo almas, una conexión a la vez.</p>
+                Creemos que jugar es el idioma universal de la conexión. Por eso, en D&V Blocks Universal tenemos productos que trascienden edades, culturas y fronteras, recordándonos que lo más importante no es lo que construimos, sino con quién lo hacemos.</p>
                            
         </section>
 
@@ -152,13 +151,15 @@
     </script>
     <script>
             function handleFormSubmit() {
+    alert('¡Tu mensaje ha sido enviado exitosamente!');
     setTimeout(() => {
         document.getElementById('nombre').value = '';
         document.getElementById('email').value = '';
         document.getElementById('mensaje').value = '';
-    }, 500);  // Se limpia después de enviar el formulario
-    alert('¡Tu mensaje ha sido enviado exitosamente!');
-    return true;  // Permite que el formulario se envíe
+    }, 1000);  // Espera un segundo antes de limpiar los campos
+    return true;  // Permite que el formulario se envíe correctamente
+}
+
 }
     </script>
     
