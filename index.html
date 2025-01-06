@@ -91,23 +91,23 @@
         <section id="contacto">
             <h2>Contacto</h2>
             <form id="contactForm" action="https://formspree.io/f/xovvpkek" method="POST" novalidate>
-                <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
         
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Tu email" required>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
         
-                <label for="message">Mensaje</label>
-                <textarea id="message" name="message" placeholder="Tu mensaje" required></textarea>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your message" required></textarea>
         
                 <input type="text" name="_gotcha" style="display:none">
         
-                <button type="submit">Enviar</button>
+                <button type="submit">Send</button>
             </form>
         
-            <p>Síguenos también en redes sociales:</p>
+            <p>Follow us on social media:</p>
             <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">TikTok</a>
-        </section>
+        </section>        
         
     </main>
 
@@ -150,9 +150,9 @@
             });
         });
     </script>
-    <script>
+<script>
 function handleFormSubmit(event) {
-    event.preventDefault(); // Evita que se recargue la página
+    event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
 
@@ -166,7 +166,7 @@ function handleFormSubmit(event) {
     .then(async response => {
         if (response.ok) {
             alert('¡Tu mensaje ha sido enviado exitosamente!');
-            form.reset(); // Limpia los campos después de enviar
+            form.reset();  // Limpia los campos del formulario
         } else {
             const data = await response.json();
             alert(data.errors ? data.errors.map(e => e.message).join(", ") : 'Hubo un problema. Inténtalo de nuevo.');
@@ -176,12 +176,12 @@ function handleFormSubmit(event) {
         console.error('Error en la solicitud:', error);
         alert('Error de conexión. Revisa tu conexión a internet.');
     });
-
-    const form = document.getElementById('contactForm');
-form.addEventListener('submit', handleFormSubmit);
-
 }
-    </script>
+
+// Escuchar el evento de envío del formulario
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', handleFormSubmit);
+</script>
     
 </body>
 </html>
