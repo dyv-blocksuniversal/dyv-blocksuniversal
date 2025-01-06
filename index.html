@@ -88,7 +88,8 @@
 
         <section id="contacto">
             <h2>Contacto</h2>
-            <form action="https://formspree.io/f/xovvpkek" method="POST">
+            <form action="https://formspree.io/f/xovvpkek" method="POST" onsubmit="clearForm()">
+
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
             
@@ -147,5 +148,14 @@
             });
         });
     </script>
+    <script>
+        function clearForm() {
+            document.getElementById('nombre').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('mensaje').value = '';
+            alert('¡Tu mensaje ha sido enviado exitosamente!');
+        }
+    </script>
+    
 </body>
 </html>
