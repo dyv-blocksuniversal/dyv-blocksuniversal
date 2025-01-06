@@ -91,7 +91,7 @@
 
         <section id="contacto">
             <h2>Contacto</h2>
-            <form action="https://formspree.io/f/xovvpkek" method="POST" onsubmit="clearForm()">
+            <form action="https://formspree.io/f/xovvpkek" method="POST" onsubmit="return handleFormSubmit()">
 
                 <input type="text" name="_honeypot" style="display:none">
                 <label for="nombre">Nombre:</label>
@@ -156,6 +156,16 @@
             document.getElementById('email').value = '';
             document.getElementById('mensaje').value = '';
             alert('¡Tu mensaje ha sido enviado exitosamente!');
+            function handleFormSubmit() {
+    setTimeout(() => {
+        document.getElementById('nombre').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('mensaje').value = '';
+    }, 500);  // Se limpia después de enviar el formulario
+    alert('¡Tu mensaje ha sido enviado exitosamente!');
+    return true;  // Permite que el formulario se envíe
+}
+
         }
     </script>
     
