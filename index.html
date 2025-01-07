@@ -101,7 +101,7 @@
                 <textarea id="message" name="message" placeholder="Your message" required></textarea>
             
                 <!-- Campo anti-spam -->
-                <input type="text" name="_honeypot" style="display:none">
+                <input type="text" name="_honeypot" tabindex="-1" autocomplete="off" hidden>
             
                 <button type="submit">Send</button>
             </form>
@@ -145,32 +145,30 @@
         });
     </script>
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Evita el envío tradicional del formulario
-    
-            const form = event.target;
-            const formData = new FormData(form);
-    
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('¡Tu mensaje ha sido enviado exitosamente!');
-                    form.reset();  // Limpia el formulario
-                } else {
-                    alert('Hubo un problema al enviar el formulario. Por favor intenta nuevamente.');
-                }
-            })
-            .catch(error => {
-                console.error('Error de conexión:', error);
-                alert('Error de conexión. Revisa tu conexión a internet.');
-            });
-        });
+        document.getElementById('contactForm').addEventListener('submit', function() {
+    const form = event.target;
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: form.method,
+        body: new URLSearchParams([...formData]),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('¡Tu mensaje ha sido enviado exitosamente!');
+            form.reset();
+        } else {
+            alert('Hubo un problema al enviar el formulario.');
+        }
+    })
+    .catch(error => {
+        console.error('Error de conexión:', error);
+        alert('Error de conexión. Revisa tu conexión a internet.');
+    });
+});
     </script>
     
 </body>
