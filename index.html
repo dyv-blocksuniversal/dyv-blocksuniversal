@@ -140,6 +140,10 @@
             <p>Síguenos en nuestras redes sociales:</p>
             <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">TikTok</a>
         </section>
+        <section id="politica">
+            <h2>Política de Privacidad</h2>
+            <p>En D&V Blocks Universal respetamos tu privacidad. Las cookies utilizadas en nuestro sitio tienen como objetivo mejorar tu experiencia de navegación y no recopilan información personal sin tu consentimiento. Para más detalles, contacta con nosotros.</p>
+        </section>
     </main>
 
     <footer>
@@ -222,5 +226,24 @@
             border-radius: 8px;
         }
     </style>
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Este sitio utiliza cookies para mejorar la experiencia del usuario. <a href="#politica" target="_blank">Más información</a>.</p>
+        <button id="accept-cookies">Aceptar</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('cookie-banner');
+            const acceptButton = document.getElementById('accept-cookies');
+    
+            if (!localStorage.getItem('cookiesAccepted')) {
+                banner.style.display = 'block';
+            }
+    
+            acceptButton.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'true');
+                banner.style.display = 'none';
+            });
+        });
+    </script>        
 </body>
 </html>
