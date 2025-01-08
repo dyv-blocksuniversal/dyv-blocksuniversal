@@ -23,11 +23,10 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
-     <!-- Barra de búsqueda -->
-<div class="search-bar">
-    <input type="text" id="search" placeholder="Buscar productos...">
-    <button onclick="searchProduct()">🔍</button>
-</div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Buscar productos...">
+            <button onclick="searchProduct()">🔍</button>
+        </div>
     </header>
 
     <!-- Banner rotativo -->
@@ -57,7 +56,7 @@
             <h2>Nuestros Productos</h2>
             <div class="product-grid">
                 <div class="product-item">
-                    <img src="images/producto1.jpg" alt="Bloques Xinz">
+                    <img src="images/Productos24.jpg" alt="Bloques Xinz">
                     <h3>Bloques Xinz</h3>
                     <p>Despierta la creatividad y construye sin límites.</p>
                     <a href="#" class="btn buy-btn">Comprar Ahora</a>
@@ -73,10 +72,7 @@
 
         <section id="nosotros">
             <h2>Sobre Nosotros</h2>
-            <p>En un mundo cada vez más desconectado, D&V Blocks Universal nace con un propósito claro: unir a las personas a través de la magia del juego. Cada bloque que ensamblamos no es solo una pieza de plástico; es un puente que conecta generaciones, una chispa que despierta la creatividad, y un lazo que fortalece las relaciones.
-                Desde el primer momento en que un niño toma una pieza en sus manos hasta cuando un abuelo ayuda a completar una obra maestra, nuestros bloques se convierten en mucho más que juguetes. Son testigos de risas compartidas, desafíos superados en equipo, y momentos que quedarán grabados en la memoria de quienes los viven.
-                Creemos que jugar es el idioma universal de la conexión. Por eso, en D&V Blocks Universal tenemos productos que trascienden edades, culturas y fronteras, recordándonos que lo más importante no es lo que construimos, sino con quién lo hacemos.</p>
-                           
+            <p>En un mundo cada vez más desconectado, D&V Blocks Universal nace con un propósito claro: unir a las personas a través de la magia del juego. Cada bloque que ensamblamos no es solo una pieza de plástico; es un puente que conecta generaciones, una chispa que despierta la creatividad, y un lazo que fortalece las relaciones.</p>
         </section>
 
         <section id="inspiracion">
@@ -84,18 +80,18 @@
             <p>Descubre las increíbles creaciones de nuestra comunidad.</p>
             <div class="gallery">
                 <!-- Imágenes con efecto Lightbox -->
-                <a href="images/Calamardo.jpg" target="_blank"><img src="images/Calamardo.jpg" alt="Creación 1"></a>
-                <a href="images/Furia.jpg" target="_blank"><img src="images/Furia.jpg" alt="Creación 2"></a>
-                <a href="images/Lotso.jpg" target="_blank"><img src="images/Lotso.jpg" alt="Creación 3"></a>
-                <a href="images/Pigglet.jpg" target="_blank"><img src="images/Pigglet.jpg" alt="Creación 4"></a>
-                <a href="images/Calamardo_luisa.jpg" target="_blank"><img src="images/Calamardo_luisa.jpg" alt="Creación 5"></a>
-                <a href="images/Venom_posso.jpg" target="_blank"><img src="images/Venom_posso.jpg" alt="Creación 6"></a>
-                <!-- Video añadido -->
-                <video controls>
+                <a href="images/Calamardo.jpg" target="_blank"><img src="images/Calamardo.jpg" alt="Creación 1" class="responsive-media"></a>
+                <a href="images/Furia.jpg" target="_blank"><img src="images/Furia.jpg" alt="Creación 2" class="responsive-media"></a>
+                <a href="images/Lotso.jpg" target="_blank"><img src="images/Lotso.jpg" alt="Creación 3" class="responsive-media"></a>
+                <a href="images/Pigglet.jpg" target="_blank"><img src="images/Pigglet.jpg" alt="Creación 4" class="responsive-media"></a>
+                <a href="images/Calamardo_luisa.jpg" target="_blank"><img src="images/Calamardo_luisa.jpg" alt="Creación 5" class="responsive-media"></a>
+                <a href="images/Venom_posso.jpg" target="_blank"><img src="images/Venom_posso.jpg" alt="Creación 6" class="responsive-media"></a>
+                <!-- Videos añadidos con clase responsive -->
+                <video controls class="responsive-media">
                     <source src="videos/Venom.mp4" type="video/mp4">
                     Tu navegador no soporta el formato de video.
                 </video>
-                <video controls>
+                <video controls class="responsive-media">
                     <source src="videos/Sticht.mp4" type="video/mp4">
                     Tu navegador no soporta el formato de video.
                 </video>
@@ -117,23 +113,22 @@
             <form id="contactForm" action="https://formspree.io/f/xovvpkek" method="POST">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="nombre" placeholder="Your name" required>
-            
+
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Your email" required>
-            
+
                 <label for="message">Message</label>
                 <textarea id="message" name="mensaje" placeholder="Your message" required></textarea>
-            
+
                 <!-- Campo anti-spam -->
                 <input type="text" name="_honeypot" tabindex="-1" autocomplete="off" hidden>
-            
+
                 <button type="submit">Send</button>
             </form>
-            
+
             <p>Síguenos en nuestras redes sociales:</p>
             <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">TikTok</a>
-        </section>      
-        
+        </section>
     </main>
 
     <footer>
@@ -157,6 +152,7 @@
             const query = document.getElementById('search').value.toLowerCase();
             alert('Buscando: ' + query);
         }
+
         // Animación suave para botones
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(button => {
@@ -167,33 +163,53 @@
                 button.style.backgroundColor = '#FF6600';
             });
         });
-    </script>
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function() {
-    const form = event.target;
-    const formData = new FormData(form);
 
-    fetch(form.action, {
-        method: form.method,
-        body: new URLSearchParams([...formData]),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('¡Tu mensaje ha sido enviado exitosamente!');
-            form.reset();
-        } else {
-            alert('Hubo un problema al enviar el formulario.');
-        }
-    })
-    .catch(error => {
-        console.error('Error de conexión:', error);
-        alert('Error de conexión. Revisa tu conexión a internet.');
-    });
-});
+        // Envío del formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: form.method,
+                body: new URLSearchParams([...formData]),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('¡Tu mensaje ha sido enviado exitosamente!');
+                    form.reset();
+                } else {
+                    alert('Hubo un problema al enviar el formulario.');
+                }
+            })
+            .catch(error => {
+                console.error('Error de conexión:', error);
+                alert('Error de conexión. Revisa tu conexión a internet.');
+            });
+        });
     </script>
-    
+
+    <style>
+        .responsive-media {
+            max-width: 100%;
+            height: auto;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        video {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
 </body>
 </html>
