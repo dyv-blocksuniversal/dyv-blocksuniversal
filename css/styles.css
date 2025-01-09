@@ -1,4 +1,4 @@
-/* General Styles */
+/* Estilo general */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -84,12 +84,6 @@ section {
 .product-item img {
     max-width: 100%;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.product-item img:hover {
-    transform: scale(1.05);
 }
 
 .product-item h3 {
@@ -124,11 +118,6 @@ section {
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
 }
 
 video {
@@ -209,7 +198,6 @@ footer {
 .search-bar button:hover {
     background-color: #e65c00;
 }
-
 .cookie-banner {
     position: fixed;
     bottom: 0;
@@ -240,7 +228,6 @@ footer {
 .cookie-banner button:hover {
     background-color: #e65c00;
 }
-
 #politica {
     margin-top: 2rem;
     padding: 1rem;
