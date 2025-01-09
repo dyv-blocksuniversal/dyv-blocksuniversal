@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QBVYCQEPQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6QBVYCQEPQ');
+ <!-- Google Tag Manager -->
+ <script async src="https://www.googletagmanager.com/gtm.js?id=G-6QBVYCQEPQ"></script>
+ <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag() { dataLayer.push(arguments); }
+     gtag('consent', 'default', {
+         'ad_storage': 'denied',
+         'analytics_storage': 'denied'
+     });
+ </script>
+ <!-- End Google Tag Manager -->
 </script>
 
     <meta charset="UTF-8">
@@ -19,9 +22,10 @@
     <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
-    <!-- Google Tag Manager (Body) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GT-5NP8MPBF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-</head>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GT-5NP8MPBF"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
 <body>
     <header>
         <div class="logo">
@@ -241,13 +245,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('cookie-banner');
             const acceptButton = document.getElementById('accept-cookies');
-    
+
             if (!localStorage.getItem('cookiesAccepted')) {
                 banner.style.display = 'block';
             }
-    
+
             acceptButton.addEventListener('click', () => {
                 localStorage.setItem('cookiesAccepted', 'true');
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'analytics_storage': 'granted'
+                });
                 banner.style.display = 'none';
             });
         });
