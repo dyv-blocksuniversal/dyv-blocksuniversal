@@ -241,13 +241,9 @@
             border-radius: 8px;
         }
     </style>
-    <div id="cookie-banner" class="cookie-banner">
-        <p>Este sitio utiliza cookies para mejorar la experiencia del usuario. <a href="#politica" target="_blank">Más información</a>.</p>
-        <button id="accept-cookies">Aceptar</button>
-    </div>
     <script>
-           // Banner de cookies
-           document.addEventListener('DOMContentLoaded', () => {
+          // Banner de cookies
+        document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('cookie-banner');
             const acceptButton = document.getElementById('accept-cookies');
             if (!localStorage.getItem('cookiesAccepted')) {
