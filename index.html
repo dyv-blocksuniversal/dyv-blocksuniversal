@@ -199,9 +199,9 @@
 
     fetch(form.action, {
         method: form.method,
-        body: new URLSearchParams([...formData]),
+        body: formData,
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Accept': 'application/json'
         }
     })
     .then(response => {
