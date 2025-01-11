@@ -193,29 +193,30 @@
         });
 
         document.getElementById('contactForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
 
-    try {
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: formData,
-            headers: {
+            try {
+                const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
                 'Accept': 'application/json'
-            }
-        });
+                }
+                });
 
         if (response.ok) {
             alert('¡Tu mensaje ha sido enviado exitosamente!');
             form.reset();
-        } else {
-            alert('Hubo un problema al enviar el formulario. Inténtalo nuevamente.');
-        }
-    } catch (error) {
+            } else {
+                alert('Hubo un problema al enviar el formulario. Inténtalo nuevamente.');
+            }
+        } catch (error) {
         alert('Error de conexión. Revisa tu conexión a internet.');
-    }
-});
+        }
+    });
+
     </script>
 
     <style>
