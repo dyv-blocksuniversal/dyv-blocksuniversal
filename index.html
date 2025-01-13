@@ -134,7 +134,7 @@
 
         <section id="contacto">
             <h2>Contacto</h2>
-            <form id="contactForm" action="https://formspree.io/f/xovvpkek" method="POST">
+            <form id="contactForm" action="https://submit-form.com/xovvpkek" method="POST">
                 <label for="name">Nombre</label>
                 <input type="text" id="name" name="nombre" placeholder="Tu nombre" required>
             
@@ -145,7 +145,8 @@
                 <textarea id="message" name="mensaje" placeholder="Tu mensaje" required></textarea>
             
                 <button type="submit">Enviar</button>
-            </form>            
+            </form>
+                 
 
             <p>Síguenos en nuestras redes sociales:</p>
             <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">TikTok</a>
@@ -194,12 +195,18 @@
             const form = event.target;
             const formData = new FormData(form);
 
+            function formToUrlEncoded(formData) {
+                return new URLSearchParams(formData).toString();
+            }
             try {
                 const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
+                                        method: form.method,
+                                        body: formToUrlEncoded(formData),
+                                        headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/x-www-form-urlencoded'
+                                        }
+                                    })
 
                 if (response.ok) {
                     alert('¡Tu mensaje ha sido enviado exitosamente!');
