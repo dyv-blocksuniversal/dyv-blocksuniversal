@@ -134,22 +134,15 @@
 
         <section id="contacto">
             <h2>Contacto</h2>
-            <form id="contactForm" action="https://formspree.io/f/xovvpkek" method="POST">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="nombre" placeholder="Your name" required>
-            
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your email" required>
-            
-                <label for="message">Message</label>
-                <textarea id="message" name="mensaje" placeholder="Your message" required></textarea>
-            
-                <!-- Campo anti-spam -->
-                <input type="text" name="_honeypot" tabindex="-1" autocomplete="off" hidden>
-            
-                <button type="submit">Send</button>
-            </form>         
-
+            <p>Completa nuestro formulario para enviarnos tus consultas, comentarios o sugerencias.</p>
+            <div class="form-container">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSd-W35B_TeJ0cbonRDaSNnrJ9nxc9ffFyYKDop8l5aws4XNow/viewform?embedded=true" 
+                    width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">
+                    Cargando…
+                </iframe>
+            </div>
+        </section>         
             <p>Síguenos en nuestras redes sociales:</p>
             <a href="https://www.tiktok.com/@dv.blocks.univers" target="_blank" rel="noopener noreferrer">TikTok</a>
         </section>
@@ -193,32 +186,14 @@
         });
     </script>
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function() {
-    const form = event.target;
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-        method: form.method,
-        body: new URLSearchParams([...formData]),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('¡Tu mensaje ha sido enviado exitosamente!');
-            form.reset();
-        } else {
-            alert('Hubo un problema al enviar el formulario.');
-        }
-    })
-    .catch(error => {
-        console.error('Error de conexión:', error);
-        alert('Error de conexión. Revisa tu conexión a internet.');
-    });
-});
+        window.addEventListener('message', function(event) {
+            if (event.origin.startsWith('https://docs.google.com')) {
+                const iframe = document.querySelector('iframe');
+                iframe.style.height = event.data + 'px';
+            }
+        });
     </script>
-    <style>
+        <style>
         .responsive-media {
             max-width: 100%;
             height: auto;
