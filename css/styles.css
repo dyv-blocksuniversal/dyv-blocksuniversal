@@ -88,6 +88,7 @@ section {
 .product-item:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
+    border: 2px solid #ff9900; /* Borde visible */
 }
 
 .product-item img {
@@ -98,6 +99,7 @@ section {
 
 .product-item img:hover {
     transform: scale(1.05);
+    border: 2px solid #ff9900; /* Borde visible */
 }
 
 .product-item h3 {
@@ -121,6 +123,7 @@ section {
     transform: scale(1.05);
     border: 2px solid #ff9900; /* Borde visible */
 }
+
 
 .gallery {
     display: grid;
@@ -301,8 +304,8 @@ footer {
 
 .social-icons img:hover {
     transform: scale(1.1);
+    border: 2px solid #ff9900; /* Borde visible */
 }
-
 
 .back-to-top {
     font-size: 30px;
