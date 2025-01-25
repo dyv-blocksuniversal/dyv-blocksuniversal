@@ -299,10 +299,10 @@ footer {
     transform: scale(1.2);
 }
 .social-icons img {
-    width: 32px; /* Ajusta el tamaño de los íconos */
-    height: 32px;
-    margin: 0 10px; /* Espaciado entre los íconos */
-    transition: transform 0.3s ease;
+    width: 40px; /* Ajusta este valor al tamaño deseado */
+    height: 40px; /* Asegura que todos los íconos sean cuadrados */
+    object-fit: contain; /* Mantiene la proporción de la imagen */
+    margin: 0 10px; /* Espaciado entre íconos */
 }
 
 .social-icons img:hover {
