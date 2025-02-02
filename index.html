@@ -6,7 +6,9 @@
     <meta name="description" content="Unimos generaciones con bloques que inspiran creatividad y conectan corazones.">
     <meta name="algolia-site-verification"  content="95D978D193F14F08" />
     <title>D&V Blocks Universal</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.min.css">
     <!-- Google Tag Manager -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=G-6QBVYCQEPQ"></script>
     <script>
@@ -50,6 +52,7 @@
             <input type="text" id="search" placeholder="Buscar productos...">
             <button onclick="searchProduct()">🔍</button>
         </div>
+        <div id="search-results" class="search-results"></div>
     </header>
 
     <!-- Banner rotativo -->
@@ -180,11 +183,35 @@
             }
         });
 
-        // Función de búsqueda
-        function searchProduct() {
-            const query = document.getElementById('search').value.toLowerCase();
-            window.location.href = "/search?query=" + encodeURIComponent(query);  // Redirige a la página de búsqueda
-        }
+        // Configuración de Algolia
+const searchClient = algoliasearch('WAEN54GNHI', '55ceff3d0bb254fef50a8a49b907aef3');
+
+const search = instantsearch({
+  indexName: 'Productos', // Reemplaza con el nombre de tu índice
+  searchClient,
+});
+
+// Agregar widgets de búsqueda
+search.addWidgets([
+  instantsearch.widgets.searchBox({
+    container: '#search', // Usamos el ID del input de búsqueda que ya tienes
+    placeholder: 'Buscar productos...',
+  }),
+  instantsearch.widgets.hits({
+    container: '#search-results', // Contenedor para mostrar los resultados
+    templates: {
+      item: `
+        <div class="product-item">
+          <h3>{{{_highlightResult.nombre.value}}}</h3>
+          <p>{{{_highlightResult.descripcion.value}}}</p>
+        </div>
+      `,
+    },
+  }),
+]);
+
+// Iniciar la búsqueda
+search.start();
 
         // Animación suave para botones
         const buttons = document.querySelectorAll('.btn');
