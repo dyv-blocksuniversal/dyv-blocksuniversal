@@ -20,7 +20,7 @@
         });
     </script>
     <!-- End Google Tag Manager -->
-
+ 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
@@ -28,7 +28,7 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-6QBVYCQEPQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
+ 
     <!-- Banner de Consentimiento -->
     <div id="cookie-banner" class="cookie-banner">
         <p>Este sitio utiliza cookies para mejorar la experiencia del usuario. <a href="#politica" target="_blank">Más información</a>.</p>
@@ -56,7 +56,7 @@
         </div>
         <div id="search-results" class="search-results"></div>
     </header>
-
+ 
     <!-- Banner rotativo -->
     <section id="banner">
         <div class="banner-slide" style="background-image: url('images/banner1.jpg');">
@@ -72,14 +72,14 @@
             <p>No te pierdas nuestras ofertas únicas.</p>
         </div>
     </section>
-
+ 
     <main>
         <section id="inicio">
             <h1>Piezas que conectan corazones</h1>
             <p>Descubre la magia de crear y compartir con D&V Blocks Universal.</p>
             <a href="#productos" class="cta">Explorar Productos</a>
         </section>
-
+ 
         <section id="productos">
             <h2>Nuestros Productos</h2>
             <div class="product-grid">
@@ -97,14 +97,14 @@
                 </div>
             </div>
         </section>
-
+ 
         <section id="nosotros">
             <h2>Sobre Nosotros</h2>
             <p>En un mundo cada vez más desconectado, D&V Blocks Universal nace con un propósito claro: unir a las personas a través de la magia del juego. Cada bloque que ensamblamos no es solo una pieza de plástico; es un puente que conecta generaciones, una chispa que despierta la creatividad, y un lazo que fortalece las relaciones.
                 Desde el primer momento en que un niño toma una pieza en sus manos hasta cuando un abuelo ayuda a completar una obra maestra, nuestros bloques se convierten en mucho más que juguetes. Son testigos de risas compartidas, desafíos superados en equipo, y momentos que quedarán grabados en la memoria de quienes los viven.
                 Creemos que jugar es el idioma universal de la conexión. Por eso, en D&V Blocks Universal tenemos productos que trascienden edades, culturas y fronteras, recordándonos que lo más importante no es lo que construimos, sino con quién lo hacemos.</p>
         </section>
-
+ 
         <section id="inspiracion">
             <h2>Inspiración y Comunidad</h2>
             <p>Descubre las increíbles creaciones de nuestra comunidad.</p>
@@ -128,7 +128,7 @@
             </div>
             <p>¡Comparte tu obra con el hashtag <strong>#ConectaConDVB</strong>!</p>
         </section>
-
+ 
         <section id="testimonios">
             <h2>Testimonios</h2>
             <div class="testimonials">
@@ -137,7 +137,7 @@
                 <p>"El mejor regalo educativo que he comprado. ¡Muy recomendado!" - Sofía R.</p>
             </div>
         </section>
-
+ 
         <section id="contacto">
             <h2>Contacto</h2>
             <p>Completa nuestro formulario para enviarnos tus consultas, comentarios o sugerencias.</p>
@@ -147,13 +147,13 @@
                 Completar Formulario
             </a>
         </section>
-
+ 
         <section id="politica">
             <h2>Política de Privacidad</h2>
             <p>En D&V Blocks Universal respetamos tu privacidad. Las cookies utilizadas en nuestro sitio tienen como objetivo mejorar tu experiencia de navegación y no recopilan información personal sin tu consentimiento. Para más detalles, contacta con nosotros.</p>
         </section>
     </main>
-
+ 
     <footer>
         <p>&copy; 2025 D&V Blocks Universal. Todos los derechos reservados.</p>
         <div class="social-icons">
@@ -174,8 +174,8 @@
             &#9650; <!-- Símbolo de flecha hacia arriba -->
         </a>
     </footer>
-
-
+ 
+ 
     <script>
         // Mostrar el botón "Volver arriba" al desplazarse
         const backToTopButton = document.querySelector('.back-to-top');
@@ -186,15 +186,15 @@
                 backToTopButton.style.display = 'none';
             }
         });
-
+ 
         // Configuración de Algolia
         const searchClient = algoliasearch('WAEN54GNHI', '55ceff3d0bb254fef50a8a49b907aef3');
-
+ 
         const search = instantsearch({
             indexName: 'Productos', // Reemplaza con el nombre de tu índice
             searchClient,
         });
-
+ 
         // Agregar widgets de búsqueda
         search.addWidgets([
             instantsearch.widgets.searchBox({
@@ -213,10 +213,23 @@
                 },
             }),
         ]);
-
+ 
         // Iniciar la búsqueda
         search.start();
-
+ 
+        // Mostrar/ocultar el cuadro de resultados según si hay texto de búsqueda.
+        // (Necesario porque Algolia siempre inyecta elementos HTML internos,
+        // aunque estén vacíos, así que CSS :empty no sirve para detectarlo).
+        const searchResultsBox = document.getElementById('search-results');
+        search.on('render', () => {
+            const query = search.helper.state.query;
+            if (query && query.trim() !== '') {
+                searchResultsBox.style.display = 'block';
+            } else {
+                searchResultsBox.style.display = 'none';
+            }
+        });
+ 
         // Animación suave para botones
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(button => {
@@ -245,13 +258,13 @@
             margin: 10px auto;
             display: block;
         }
-
+ 
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
-
+ 
         video {
             border: 1px solid #ddd;
             border-radius: 8px;
