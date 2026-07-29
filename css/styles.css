@@ -499,7 +499,7 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.5); /* valor por defecto para íconos con espacio transparente sobrante */
+    transform: scale(1.15); /* valor moderado por defecto para íconos con espacio transparente sobrante */
 }
 
 /* Facebook e Instagram ya vienen recortados al borde, sin espacio sobrante */
