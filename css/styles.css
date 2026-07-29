@@ -124,11 +124,7 @@ nav ul li a:hover {
     top: 70px;
     width: 280px;
     z-index: 600;
-    display: none; /* oculto por defecto */
-}
-
-#search-results:not(:empty) {
-    display: block; /* solo aparece cuando Algolia le inyecta resultados */
+    display: none; /* JS lo muestra solo cuando hay una búsqueda con texto */
 }
 
 @media (max-width: 768px) {
@@ -413,12 +409,6 @@ form button:hover {
     padding: 0.5rem;
 }
 
-#search-results:empty {
-    border: none;
-    box-shadow: none;
-    padding: 0;
-}
-
 .hit-item {
     padding: 0.6rem 0.5rem;
     border-bottom: 1px solid #eee;
@@ -501,8 +491,6 @@ footer {
     margin: 0 10px;
     border-radius: 50%;
     border: 2px solid #555;
-    padding: 6px;
-    background: white;
     transition: transform 0.3s, border-color 0.3s;
 }
 
