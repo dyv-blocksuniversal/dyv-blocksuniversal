@@ -502,13 +502,13 @@ footer {
     transform: scale(1.15); /* valor moderado por defecto para íconos con espacio transparente sobrante */
 }
 
-/* Facebook e Instagram: se recortaban con "cover" por tener proporciones
-   distintas a WhatsApp/TikTok. "contain" muestra el logo completo sin cortar nada. */
+/* Facebook e Instagram: mismo enfoque que WhatsApp/TikTok (cover + zoom),
+   valor de zoom a ajustar según se vea */
 .social-icons img[src*="facebook-icon"],
 .social-icons img[src*="instagram-icon"] {
-    object-fit: contain;
-    transform: scale(1);
-    background-color: white;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.4);
 }
 
 .social-icons a:hover {
