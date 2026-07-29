@@ -48,14 +48,13 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+        <!-- Barra de búsqueda: unificada bajo Algolia InstantSearch.
+             Se eliminó el input manual duplicado y el botón con onclick="searchProduct()"
+             porque esa función no existía y chocaba con el widget de Algolia. -->
         <div class="search-bar">
-            <input type="text" id="search" placeholder="Buscar productos...">
-            <button onclick="searchProduct()">🔍</button>
+            <div id="searchbox"></div>
         </div>
         <div id="search-results" class="search-results"></div>
-        <div id="searchbox"></div>
-        <div id="hits"></div> <!-- Aquí aparecerán los resultados -->
-
     </header>
 
     <!-- Banner rotativo -->
@@ -88,13 +87,13 @@
                     <img src="images/Productos24.jpg" alt="Bloques Xinz">
                     <h3>Bloques Xinz</h3>
                     <p>Despierta la creatividad y construye sin límites.</p>
-                    <a href="#" class="btn buy-btn">Comprar Ahora</a>
+                    <a href="https://wa.me/573113260679?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Bloques%20Xinz" target="_blank" rel="noopener noreferrer" class="btn buy-btn">Comprar Ahora</a>
                 </div>
                 <div class="product-item">
                     <img src="images/producto2.jpg" alt="Set Creativo">
                     <h3>Set Creativo</h3>
                     <p>Todo lo que necesitas para crear historias únicas.</p>
-                    <a href="#" class="btn buy-btn">Comprar Ahora</a>
+                    <a href="https://wa.me/573113260679?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Set%20Creativo" target="_blank" rel="noopener noreferrer" class="btn buy-btn">Comprar Ahora</a>
                 </div>
             </div>
         </section>
@@ -142,11 +141,13 @@
         <section id="contacto">
             <h2>Contacto</h2>
             <p>Completa nuestro formulario para enviarnos tus consultas, comentarios o sugerencias.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-W35B_TeJ0cbonRDaSNnrJ9nxc9ffFyYKDop8l5aws4XNow/viewform" 
-               target="_blank" 
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-W35B_TeJ0cbonRDaSNnrJ9nxc9ffFyYKDop8l5aws4XNow/viewform"
+               target="_blank"
                class="cta">
                 Completar Formulario
             </a>
+        </section>
+
         <section id="politica">
             <h2>Política de Privacidad</h2>
             <p>En D&V Blocks Universal respetamos tu privacidad. Las cookies utilizadas en nuestro sitio tienen como objetivo mejorar tu experiencia de navegación y no recopilan información personal sin tu consentimiento. Para más detalles, contacta con nosotros.</p>
@@ -157,7 +158,7 @@
         <p>&copy; 2025 D&V Blocks Universal. Todos los derechos reservados.</p>
         <div class="social-icons">
             <a href="https://www.facebook.com/profile.php?id=61571599753923" target="_blank" rel="noopener noreferrer">
-                <img src="images/facebook-icon.png" alt="Facebook">            
+                <img src="images/facebook-icon.png" alt="Facebook">
             </a>
             <a href="https://www.instagram.com/dvblocksuniversal" target="_blank" rel="noopener noreferrer">
                 <img src="images/instagram-icon.png" alt="Instagram">
@@ -171,9 +172,9 @@
         </div>
         <a href="#inicio" class="back-to-top">
             &#9650; <!-- Símbolo de flecha hacia arriba -->
-        </a>        
+        </a>
     </footer>
-    
+
 
     <script>
         // Mostrar el botón "Volver arriba" al desplazarse
@@ -187,34 +188,34 @@
         });
 
         // Configuración de Algolia
-const searchClient = algoliasearch('WAEN54GNHI', '55ceff3d0bb254fef50a8a49b907aef3');
+        const searchClient = algoliasearch('WAEN54GNHI', '55ceff3d0bb254fef50a8a49b907aef3');
 
-const search = instantsearch({
-  indexName: 'Productos', // Reemplaza con el nombre de tu índice
-  searchClient,
-});
+        const search = instantsearch({
+            indexName: 'Productos', // Reemplaza con el nombre de tu índice
+            searchClient,
+        });
 
-// Agregar widgets de búsqueda
-search.addWidgets([
-  instantsearch.widgets.searchBox({
-    container: '#search', // Usamos el ID del input de búsqueda que ya tienes
-    placeholder: 'Buscar productos...',
-  }),
-  instantsearch.widgets.hits({
-    container: '#search-results', // Contenedor para mostrar los resultados
-    templates: {
-      item: `
-        <div class="product-item">
-          <h3>{{{_highlightResult.nombre.value}}}</h3>
-          <p>{{{_highlightResult.descripcion.value}}}</p>
-        </div>
-      `,
-    },
-  }),
-]);
+        // Agregar widgets de búsqueda
+        search.addWidgets([
+            instantsearch.widgets.searchBox({
+                container: '#searchbox',
+                placeholder: 'Buscar productos...',
+            }),
+            instantsearch.widgets.hits({
+                container: '#search-results',
+                templates: {
+                    item: `
+                        <div class="product-item">
+                          <h3>{{{_highlightResult.nombre.value}}}</h3>
+                          <p>{{{_highlightResult.descripcion.value}}}</p>
+                        </div>
+                    `,
+                },
+            }),
+        ]);
 
-// Iniciar la búsqueda
-search.start();
+        // Iniciar la búsqueda
+        search.start();
 
         // Animación suave para botones
         const buttons = document.querySelectorAll('.btn');
@@ -231,11 +232,13 @@ search.start();
         window.addEventListener('message', function(event) {
             if (event.origin.startsWith('https://docs.google.com')) {
                 const iframe = document.querySelector('iframe');
-                iframe.style.height = event.data + 'px';
+                if (iframe) {
+                    iframe.style.height = event.data + 'px';
+                }
             }
         });
     </script>
-        <style>
+    <style>
         .responsive-media {
             max-width: 100%;
             height: auto;
@@ -255,7 +258,7 @@ search.start();
         }
     </style>
     <script>
-          // Banner de cookies
+        // Banner de cookies
         document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('cookie-banner');
             const acceptButton = document.getElementById('accept-cookies');
@@ -271,6 +274,6 @@ search.start();
                 banner.style.display = 'none';
             });
         });
-    </script>        
+    </script>
 </body>
 </html>
