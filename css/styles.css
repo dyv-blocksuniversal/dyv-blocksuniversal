@@ -499,7 +499,13 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.5); /* "zoom" para compensar el padding interno del ícono */
+    transform: scale(1.5); /* valor por defecto para íconos con espacio transparente sobrante */
+}
+
+/* Facebook e Instagram ya vienen recortados al borde, sin espacio sobrante */
+.social-icons img[src*="facebook-icon"],
+.social-icons img[src*="instagram-icon"] {
+    transform: scale(1);
 }
 
 .social-icons a:hover {
